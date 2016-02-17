@@ -1,0 +1,21 @@
+{
+  "name": "com-prototype",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Matt Ford"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0"
+  }
+}
