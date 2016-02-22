@@ -99,6 +99,7 @@ export class EmailSubmit {
         this._picker = _elemRef.nativeElement.querySelector('paper-date-picker');
         
         this.todaysDate = moment();
+        console.log(this.todaysDate);
     }
     
     toggle() {

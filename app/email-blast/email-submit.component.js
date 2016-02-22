@@ -24,6 +24,7 @@ System.register(['angular2/core'], function(exports_1) {
                     this._dialog = _elemRef.nativeElement.querySelector('paper-dialog');
                     this._picker = _elemRef.nativeElement.querySelector('paper-date-picker');
                     this.todaysDate = moment();
+                    console.log(this.todaysDate);
                 }
                 EmailSubmit.prototype.toggle = function () {
                     this.visible = !this.visible;
