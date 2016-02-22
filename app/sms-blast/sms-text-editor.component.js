@@ -23,7 +23,7 @@ System.register(['angular2/core'], function(exports_1) {
                     core_1.Component({
                         selector: 'sms-text-editor',
                         template: "\n            <paper-textarea char-counter maxlength=\"160\" label=\"Message\"></paper-textarea>\n    ",
-                        styles: ["\n        paper-textarea {\n            width:775px;\n        } \n        .messageLabel {\n            width:50px;\n        }  \n    "]
+                        styles: ["\n        paper-textarea {\n            width:775px;\n            border:1px solid black;\n        } \n    "]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], SMSTextEditorComponent);

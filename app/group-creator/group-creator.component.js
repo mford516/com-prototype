@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', './group-info.component', './group-summary.component', './group-list.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,21 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, group_info_component_1, group_summary_component_1, group_list_component_1;
     var GroupCreatorComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (group_info_component_1_1) {
+                group_info_component_1 = group_info_component_1_1;
+            },
+            function (group_summary_component_1_1) {
+                group_summary_component_1 = group_summary_component_1_1;
+            },
+            function (group_list_component_1_1) {
+                group_list_component_1 = group_list_component_1_1;
             }],
         execute: function() {
             GroupCreatorComponent = (function () {
@@ -22,7 +31,9 @@ System.register(['angular2/core'], function(exports_1) {
                 GroupCreatorComponent = __decorate([
                     core_1.Component({
                         selector: 'group-creator',
-                        template: "\n        <h3>Group Creator</h3>\n    "
+                        template: "\n        <h3>Group Creator</h3>\n        <div>\n            <group-info></group-info>\n            <group-summary></group-summary>\n            <group-list></group-list>\n        </div>\n    ",
+                        directives: [group_info_component_1.GroupInfoComponent, group_summary_component_1.GroupSummaryComponent, group_list_component_1.GroupListComponent],
+                        styles: ["\n        h3, div {\n            width:775px;\n            margin: 0 auto;\n        }\n        group-info {\n            float:left;\n            width: 30%;   \n        }\n        group-summary {\n            float:left;\n            width: 45%;   \n        }\n        group-list {\n            float:left;\n            width: 20%;   \n        }\n    "]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], GroupCreatorComponent);
