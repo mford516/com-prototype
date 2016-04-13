@@ -11,34 +11,39 @@ import {GroupCreatorComponent} from './group-creator/group-creator.component'
     template: `
         <h1>Communicate Blast Prototype</h1>
         <paper-tabs noink no-bar selected="0">
-            <paper-tab [routerLink]="['EmailBlast']">Email Blast</paper-tab>
-            <paper-tab [routerLink]="['SMSBlast']">SMS Blast</paper-tab>
-            <paper-tab [routerLink]="['VoiceBlast']">Voice Blast</paper-tab>
-            <paper-tab [routerLink]="['GroupCreator']">Group Creator</paper-tab>
+            <paper-tab [routerLink]="['EmailBlast']">Email</paper-tab>
+            <paper-tab [routerLink]="['SMSBlast']">SMS/Text</paper-tab>
+            <paper-tab [routerLink]="['VoiceBlast']">Voice</paper-tab>
+            <paper-tab [routerLink]="['GroupCreator']">Groups</paper-tab>
         </paper-tabs>
         <router-outlet></router-outlet>
     `,
     directives: [ROUTER_DIRECTIVES],
     styles: [`
         h1 {
-            width:775px;
+            width:836px;
             margin:0 auto;
         }
         paper-tabs {
-            width:775px;
+            width:400px;
+            height:30px !important;
             margin:0 auto;
         }
         paper-tab {
-            background-color:grey;
+            background-color:#35448d;
             width:100px;
             text-align:center;
             vertical-align:center;
             font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: black;
+            color: white;
             border:1px solid black;
+            border-top-left-radius:10px 10px;
+            border-top-right-radius:10px 10px;
         }
         paper-tabs[no-bar] paper-tab.iron-selected {
-            color: white;
+            color:black;
+            border-bottom: none;
+            background-color:#bfcbe8;
         }
     `]
 })
