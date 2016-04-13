@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router', './email-blast/email-blast.component', './sms-blast/sms-blast.component', './voice-blast/voice-blast.component', './group-creator/group-creator.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './email-blast/email-blast.component', './sms-blast/sms-blast.component', './voice-blast/voice-blast.component', './group-creator/group-creator.component'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -37,9 +39,9 @@ System.register(['angular2/core', 'angular2/router', './email-blast/email-blast.
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <h1>Communicate Blast Prototype</h1>\n        <paper-tabs noink no-bar selected=\"0\">\n            <paper-tab [routerLink]=\"['EmailBlast']\">Email Blast</paper-tab>\n            <paper-tab [routerLink]=\"['SMSBlast']\">SMS Blast</paper-tab>\n            <paper-tab [routerLink]=\"['VoiceBlast']\">Voice Blast</paper-tab>\n            <paper-tab [routerLink]=\"['GroupCreator']\">Group Creator</paper-tab>\n        </paper-tabs>\n        <router-outlet></router-outlet>\n    ",
+                        template: "\n        <h1>Communicate Blast Prototype</h1>\n        <paper-tabs noink no-bar selected=\"0\">\n            <paper-tab [routerLink]=\"['EmailBlast']\">Email</paper-tab>\n            <paper-tab [routerLink]=\"['SMSBlast']\">SMS/Text</paper-tab>\n            <paper-tab [routerLink]=\"['VoiceBlast']\">Voice</paper-tab>\n            <paper-tab [routerLink]=\"['GroupCreator']\">Groups</paper-tab>\n        </paper-tabs>\n        <router-outlet></router-outlet>\n    ",
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        styles: ["\n        h1 {\n            width:775px;\n            margin:0 auto;\n        }\n        paper-tabs {\n            width:775px;\n            margin:0 auto;\n        }\n        paper-tab {\n            background-color:grey;\n            width:100px;\n            text-align:center;\n            vertical-align:center;\n            font-family:\"Helvetica Neue\", Helvetica, Arial, sans-serif;\n            color: black;\n            border:1px solid black;\n        }\n        paper-tabs[no-bar] paper-tab.iron-selected {\n            color: white;\n        }\n    "]
+                        styles: ["\n        h1 {\n            width:836px;\n            margin:0 auto;\n        }\n        paper-tabs {\n            width:400px;\n            height:30px !important;\n            margin:0 auto;\n        }\n        paper-tab {\n            background-color:#35448d;\n            width:100px;\n            text-align:center;\n            vertical-align:center;\n            font-family:\"Helvetica Neue\", Helvetica, Arial, sans-serif;\n            color: white;\n            border:1px solid black;\n            border-top-left-radius:10px 10px;\n            border-top-right-radius:10px 10px;\n        }\n        paper-tabs[no-bar] paper-tab.iron-selected {\n            color:black;\n            border-bottom: none;\n            background-color:#bfcbe8;\n        }\n    "]
                     }),
                     router_1.RouteConfig([
                         { path: '/email-blast/...', name: 'EmailBlast', component: email_blast_component_1.EmailBlastComponent, useAsDefault: true },
@@ -50,7 +52,7 @@ System.register(['angular2/core', 'angular2/router', './email-blast/email-blast.
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
-            })();
+            }());
             exports_1("AppComponent", AppComponent);
         }
     }
