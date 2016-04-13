@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -35,12 +37,12 @@ System.register(['angular2/core'], function(exports_1) {
                     core_1.Component({
                         selector: 'group-list',
                         template: "\n        <span>Existing Groups</span>\n        <paper-listbox (change)=\"onSelect()\">\n            <paper-item *ngFor=\"#group of groups\" [value]=\"group.id\">{{group.name}}</paper-item>\n        </paper-listbox>\n    ",
-                        styles: ["\n        paper-listbox {\n            border:2px solid black;\n        }\n        paper-item {\n            font-size:12px !important;\n            line-height: 16px !important;\n        }\n    "]
+                        styles: ["\n        paper-listbox {\n            width:100%;\n            border:2px solid black;\n        }\n        paper-item {\n            font-size:12px !important;\n            line-height: 16px !important;\n        }\n    "]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], GroupListComponent);
                 return GroupListComponent;
-            })();
+            }());
             exports_1("GroupListComponent", GroupListComponent);
         }
     }

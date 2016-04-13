@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,8 +20,17 @@ System.register(['angular2/core'], function(exports_1) {
         execute: function() {
             QuickAddControl = (function () {
                 function QuickAddControl(elementRef) {
+                    var _this = this;
                     this.quickAddSelectionReview = "";
-                    this._quickAdd = elementRef.nativeElement.querySelector("paper-typeahead-input");
+                    setTimeout(function () {
+                        _this._quickAdd = elementRef.nativeElement.querySelector("paper-typeahead-input");
+                        _this._quickAdd.displayProp = "name";
+                        _this._quickAdd.searchableProps = ["name", "id"];
+                        _this._quickAdd.isCandidatesJson = true;
+                        _this._quickAdd.localCandidates = _this.accounts;
+                        _this._quickAdd.placeholder = "Quick Add";
+                        _this._quickAdd.maxSuggestions = 10;
+                    }, 0);
                 }
                 QuickAddControl.prototype.onAdd = function () {
                     this.quickAddSelectionReview += this._quickAdd.inputValue + " | ";
@@ -5279,29 +5290,20 @@ System.register(['angular2/core'], function(exports_1) {
                         { "id": "31", "type": "NoAccess", "name": "Howie Howardson", "address": "howie@example.com" },
                         { "id": "32", "type": "NoAccess", "name": "Pete Peterson", "address": "pete@example.com" },
                     ];
-                    //console.log(ALLACCOUNTS);
                     this.accounts = ALLACCOUNTS;
                 };
                 QuickAddControl.prototype.ngOnInit = function () {
                     this.getAllAccounts();
-                    //console.log(this._quickAdd);
-                    this._quickAdd.displayProp = "name";
-                    this._quickAdd.searchableProps = ["name", "id"];
-                    this._quickAdd.isCandidatesJson = true;
-                    this._quickAdd.localCandidates = this.accounts;
-                    this._quickAdd.placeholder = "Quick Add";
-                    this._quickAdd.maxSuggestions = 10;
-                    //console.log(this._quickAdd.list);
                 };
                 QuickAddControl = __decorate([
                     core_1.Component({
                         selector: 'quick-add-control',
-                        template: "\n            <paper-typeahead-input>\n                <iron-icon suffix icon=\"icons:search\"></iron-icon>\n            </paper-typeahead-input>\n            <paper-button (click)=\"onAdd()\">Add</paper-button>\n    ", styles: ["\n        paper-typeahead-input {\n            display:inline-block !important;\n            width:200px;\n            margin-right:10px;\n        }\n        paper-button {\n            display: inline-block !important;\n            padding:6px 12px;\n            font-size: 14px;\n            font-weight: 400;\n            line-height: 1.42857143;\n            width:30px;\n            border:1px solid #ccc;\n            border-radius:4px;\n            background: #005890;\n            color: white;\n            font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n            cursor:pointer;\n            text-transform: none;\n        }\n    "]
+                        template: "\n            <paper-typeahead-input>\n                <iron-icon suffix icon=\"icons:search\"></iron-icon>\n            </paper-typeahead-input>\n            <paper-button (click)=\"onAdd()\">Add</paper-button>\n    ", styles: ["\n        paper-typeahead-input {\n            display:inline-block !important;\n            width:200px;\n            margin-right:10px;\n        }\n        paper-button {\n            display: inline-block !important;\n            padding:6px 12px;\n            font-size: 14px;\n            font-weight: 400;\n            line-height: 1.42857143;\n            width:30px;\n            border:1px solid #ccc;\n            border-radius:4px;\n            background: white;\n            color: black;\n            font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n            cursor:pointer;\n            text-transform: none;\n        }\n    "]
                     }), 
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], QuickAddControl);
                 return QuickAddControl;
-            })();
+            }());
             exports_1("QuickAddControl", QuickAddControl);
         }
     }

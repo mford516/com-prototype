@@ -1,4 +1,6 @@
-System.register(['angular2/core', './group-info.component', './group-summary.component', './group-list.component'], function(exports_1) {
+System.register(['angular2/core', './group-info.component', './group-summary.component', './group-list.component'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -31,14 +33,14 @@ System.register(['angular2/core', './group-info.component', './group-summary.com
                 GroupCreatorComponent = __decorate([
                     core_1.Component({
                         selector: 'group-creator',
-                        template: "\n        <h3>Group Creator</h3>\n        <div>\n            <group-info></group-info>\n            <group-summary></group-summary>\n            <group-list></group-list>\n        </div>\n    ",
+                        template: "\n        <div>\n            <group-info></group-info>\n            <group-summary></group-summary>\n            <group-list></group-list>\n            <hr>\n        </div>\n        \n    ",
                         directives: [group_info_component_1.GroupInfoComponent, group_summary_component_1.GroupSummaryComponent, group_list_component_1.GroupListComponent],
-                        styles: ["\n        h3, div {\n            width:775px;\n            margin: 0 auto;\n        }\n        group-info {\n            float:left;\n            width: 30%;   \n        }\n        group-summary {\n            float:left;\n            width: 45%;   \n        }\n        group-list {\n            float:left;\n            width: 20%;   \n        }\n    "]
+                        styles: ["\n        h3, div {\n            width:836px;\n            margin: 0 auto;\n            background-color:#bfcbe8;\n            padding:10px;\n            height:100%;\n        }\n        group-info {\n            float:left;\n            width: 45%;   \n        }\n        group-summary {\n            float:left;\n            width: 35%;   \n        }\n        group-list {\n            float:left;\n            width: 20%;   \n        }\n        hr {\n            color:black;\n        }\n    "]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], GroupCreatorComponent);
                 return GroupCreatorComponent;
-            })();
+            }());
             exports_1("GroupCreatorComponent", GroupCreatorComponent);
         }
     }

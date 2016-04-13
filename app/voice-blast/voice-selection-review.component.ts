@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core'
+import {Component,Input} from 'angular2/core'
 
 @Component({
     selector: 'voice-selection-review',
@@ -6,7 +6,8 @@ import {Component} from 'angular2/core'
             <div>
                 <hr>
                 <div>
-                    Sending to: --Model Interpolation of selection array goes here
+                    <b>Sending to:</b> {{groupSelectionReview}} {{quickAddSelectionReview}}<br>
+                    <b>Excluding:</b> {{accountSelectionReview}}
                 </div>
                 <hr>
             </div>
@@ -14,4 +15,8 @@ import {Component} from 'angular2/core'
     
 })
 
-export class VoiceSelectionReviewComponent { }
+export class VoiceSelectionReviewComponent {
+    @Input() groupSelectionReview;
+    @Input() accountSelectionReview;
+    @Input() quickAddSelectionReview;
+ }

@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,11 +20,17 @@ System.register(['angular2/core'], function(exports_1) {
         execute: function() {
             EmailAccountControl = (function () {
                 function EmailAccountControl(elementRef) {
+                    var _this = this;
                     this.selectedAccounts = [];
                     this.accountSelectLabel = "Exclude";
                     this.accountSelectionReview = "";
-                    this._menuRef = elementRef.nativeElement.querySelector("paper-menu");
-                    this._menuButtonRef = elementRef.nativeElement.querySelector("paper-menu-button");
+                    setTimeout(function () {
+                        _this._menuRef = elementRef.nativeElement.querySelector("paper-menu");
+                        _this._menuButtonRef = elementRef.nativeElement.querySelector("paper-menu-button");
+                        _this._menuButtonRef.horizontalAlign = 'right';
+                        _this._menuButtonRef.verticalOffset = 46;
+                        _this._menuButtonRef.ignoreSelect = true;
+                    }, 0);
                 }
                 EmailAccountControl.prototype.onSelect = function () {
                     var _this = this;
@@ -84,8 +92,10 @@ System.register(['angular2/core'], function(exports_1) {
                         }
                     }
                 };
+                EmailAccountControl.prototype.test = function (thing) {
+                    console.log(thing);
+                };
                 EmailAccountControl.prototype.ngOnInit = function () {
-                    this._menuButtonRef.ignoreSelect = true;
                 };
                 EmailAccountControl.prototype.ngOnChanges = function (changes) {
                     for (var propertyName in changes) {
@@ -105,7 +115,7 @@ System.register(['angular2/core'], function(exports_1) {
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], EmailAccountControl);
                 return EmailAccountControl;
-            })();
+            }());
             exports_1("EmailAccountControl", EmailAccountControl);
         }
     }

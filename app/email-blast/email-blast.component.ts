@@ -9,13 +9,24 @@ import {EmailSignatureComponent} from './email-signature.component';
 @Component({
     selector: 'email-blast',
     template: `
-        <div>
-            <h3>Email Blast</h3>
+        <div class="container">
             <paper-tabs noink no-bar selected="0">
-                <paper-tab [routerLink]="['NewEmail']">New</paper-tab>
-                <paper-tab [routerLink]="['EmailHistory']">History</paper-tab>
-                <paper-tab [routerLink]="['EmailScheduled']">Scheduled</paper-tab>
-                <paper-tab [routerLink]="['EmailSignature']">Signature</paper-tab>
+                <paper-tab [routerLink]="['NewEmail']">
+                    New
+                </paper-tab>
+                <paper-tab [routerLink]="['EmailHistory']">
+                    <iron-icon icon="event"></iron-icon>
+                    <br>
+                    <div>History</div>
+                </paper-tab>
+                <paper-tab [routerLink]="['EmailScheduled']">
+                    <iron-icon icon="schedule"></iron-icon>
+                    Scheduled
+                </paper-tab>
+                <paper-tab [routerLink]="['EmailSignature']">
+                    <iron-icon icon="create"></iron-icon>
+                    Signature
+                </paper-tab>
             </paper-tabs>
             <div>&nbsp;</div>
             <router-outlet></router-outlet>
@@ -25,26 +36,32 @@ import {EmailSignatureComponent} from './email-signature.component';
     directives: [RouterOutlet,ROUTER_DIRECTIVES],
     styles: [`
         paper-tabs {
-            width:500px;
+            width:400px;
         }
         paper-tab {
-            background-color:grey;
+            background-color:#bfcbe8;
             width:100px;
             text-align:center;
             vertical-align:center;
             font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
             color: black;
-            border-top-left-radius:10px 10px;
-            border-top-right-radius:10px 10px;
             border: 1px solid black;
+            border-top:none;
+            border-collapse:collapse;
         }
         paper-tabs[no-bar] paper-tab.iron-selected {
-            color: white;
+            color:white;
             border-bottom: none;
         }
-        div {
-            width:775px;
+        .container {
+            padding:10px;
+            width:836px;
+            height:100%;
             margin: 0 auto;
+            background-color:#bfcbe8;
+        }
+        iron-icon {
+            position:static !important;
         }
     `]
 })

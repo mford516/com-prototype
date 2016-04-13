@@ -48,7 +48,7 @@ import {EmailSubmit} from './email-submit.component'
             display: inline-block !important;
         }
         div {
-            width:775px;
+            width:836px;
             margin: 0 auto;
         }
     `]

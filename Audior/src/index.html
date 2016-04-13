@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> 
+    <head>
+        <title>Audior</title>
+        <meta name="google" value="notranslate" />         
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--Include CSS to eliminate any default margins/padding and set the height of the html element and 
+    the body element to 100%, because Firefox, or any Gecko based browser, interprets percentage as 
+    the percentage of the height of its parent container, which has to be set explicitly.  Fix for
+    Firefox 3.6 focus border issues.  Initially, don't display flashContent div so it won't show 
+    if JavaScript disabled.
+ -->
+<style>
+html, body  { height:100%; }
+body { margin:0; padding:0; overflow:auto; text-align:center; background-color: #ffffff; }   
+object:focus { outline:none; }
+	     
+.btnUpload {
+	width:200px;
+	height:46px;
+	line-height:38px;
+	display:block;
+	text-align:center;
+	color:#fff;
+	font-size:18px;
+	background-color:#28A307;
+	border:0px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: '1. Record Audio';
+  display: inline-block;
+  background-color:#FF784F;
+  border:0px;
+  padding-top:15px;
+  -moz-border-radius:3px;
+  border-radius:3px;
+  width:200px;
+  height:35px;
+  text-align:center;
+  color:#fff;
+  font-size:18px;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+</style>
+ </head>
+ 
+    <body>
+    <script type="text/javascript" src="swfobject.js"></script>
+	 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	 <script type="text/javascript" src="js/jquery.form.min.js"></script>
+        <script type="text/javascript">
+            var swfVersionStr = "11.1.0";
+            var xiSwfUrlStr = "";
+       
+            var flashvars = {};
+            flashvars.lstext="Loading...";//you can provide a translation here for the "Laoding..." text taht shows up while this file and the external language file is loaded
+            flashvars.recorderId = "recorder1";//set this var if you have multiple instances of Audior on a page and you want to identify them
+            flashvars.userId ="user1";//this variable is sent back to upload.php when the user presses the [SAVE] button
+	     flashvars.licenseKey = "PLACE_LICENSE_KEY_HERE"; //licensekey variable, you get it when you purchase the software
+	     flashvars.settingsFile = "audior_settings.xml" //this setting instructs Audior what setting file to load. Either the static .XML or the dynamic .PHP that generates a dynamic xml.
+			
+            var params = {};     
+            params.quality = "high";
+            params.bgcolor = "#ffffff";
+            params.allowscriptaccess = "sameDomain";
+            params.allowfullscreen = "true";
+
+            var attributes = {};
+            attributes.id = "Audior";
+            attributes.name = "Audior";
+            attributes.align = "middle";
+		
+		var mobile = false;
+		var ua = navigator.userAgent.toLowerCase();
+		if(navigator.appVersion.indexOf("iPad") != -1 || navigator.appVersion.indexOf("iPhone") != -1 || ua.indexOf("android") != -1 || ua.indexOf("ipod") != -1 || ua.indexOf("windows ce") != -1 || ua.indexOf("windows phone") != -1){
+			mobile = true;
+		}
+		
+		if(mobile == false){
+			 swfobject.embedSWF(
+			  "Audior.swf", "flashContent", 
+			  "600", "140", 
+			  swfVersionStr, xiSwfUrlStr, 
+			  flashvars, params, attributes);
+		     swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+		}else{
+			 //do nothing
+		}
+		
+           
+        </script>
+	 
+<!-- The following script is used for mobile devices ONLY -->
+<script type="text/javascript">
+		$(document).ready(function() { 
+			var options = { 
+					target:   '#output',  
+					beforeSubmit:  beforeSubmit,  
+					success:       afterSuccess,  
+					uploadProgress: OnProgress, 
+					resetForm: true        
+				}; 
+				
+			 $('#recordingForm').submit(function() { 
+					$(this).ajaxSubmit(options);  			
+					
+					return false; 
+				}); 
+
+			$('#recorderAudio').hide();				
+
+			function afterSuccess()
+			{
+				$('#submit-btn').show();
+				$('#recorderAudio').show();
+				$('#loading-img').hide(); 
+				$('#progressbox').delay( 1000 ).fadeOut();
+				fileName = document.getElementById("output").innerHTML;	
+				var res = fileName.split(" ");
+				var recordingName;
+				
+				for(i = 0; i < res.length; i++){
+					if(res[i].indexOf("mp3") != 0){
+						recordingName = res[i];
+					}
+				}
+				
+				var audio = document.getElementById("recorderAudio");
+				setTimeout(function(){
+					audio.setAttribute("src", "recordings/mobileRecordings/"+recordingName);
+				}, 2000);
+				
+			}
+
+
+			function beforeSubmit(){
+			    
+			   if (window.File && window.FileReader && window.FileList && window.Blob)
+				{
+					
+					if( !$('#FileInput').val()) 
+					{
+						$("#output").html("Are you kidding me?");
+						return false
+					}
+					
+					var fsize = $('#FileInput')[0].files[0].size; 
+					var ftype = $('#FileInput')[0].files[0].type; 
+					
+					switch(ftype)
+					 {
+							case 'audio/3ga':
+							case 'video/quicktime':
+						  break;
+					     default:
+						 // $("#output").html("<b>"+ftype+"</b> Unsupported file type!");
+						//		return false
+					 }
+					
+					/*if(fsize>5242880) 
+					{
+						$("#output").html("<b>"+bytesToSize(fsize) +"</b> Too big file! <br />File is too big, it should be less than 5 MB.");
+						return false
+					}*/
+							
+					$('#submit-btn').hide(); 
+					$('#loading-img').show();
+					$("#output").html("");  
+				}
+				else
+				{
+					$("#output").html("Please upgrade your browser, because your current browser lacks some new features we need!");
+					return false;
+				}
+			}
+
+
+			function OnProgress(event, position, total, percentComplete)
+			{
+			    $('#progressbox').show();
+			    $('#progressbar').width(percentComplete + '%') 
+			    $('#statustxt').html(percentComplete + '%'); 
+			    if(percentComplete>50)
+				 {
+				     $('#statustxt').css('color','#000');
+				 }
+			}
+
+			function bytesToSize(bytes) {
+			   var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+			   if (bytes == 0) return '0 Bytes';
+			   var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+			   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+			}
+
+		}); 
+
+</script>
+		
+<!-- Below is the MP3Recorder JS API (Callbacks) -->
+<script>
+		
+			function btSaveClick(recordDuration,recorderId){
+				//this function is called when the SAVE button is released and it is called with 3 parameters: 
+				//recordDuration: duration of the recorded audio file in seconds but accurate to the millisecond (like this: 4.322)
+				//recorderId: the recorderId sent via flash vars, to be used when there are many recorders on the same web page
+				console.log("Audior.btSaveClick("+recordDuration+","+recorderId+")");
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: btSaveClick()";
+			}
+			
+			function btDownloadClick(recorderId){
+				//this function is called when the DOWNLOAD button is released 
+				console.log("Audior.btDownloadClick("+recorderId+")");
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: btDownloadClick()";
+			}
+			function btPlayClick(recorderId){
+				//this function is called when the PLAY button is released
+				console.log("Audior.btPlayClick("+recorderId+")");
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: btPlayClick()";
+			}
+			
+			function btPauseClick(recorderId){
+				//this function is called when the PAUSE button is released
+				console.log("Audior.btPauseClick("+recorderId+")");
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: btPauseClick()";
+			}
+			
+			function btStopClick(recorderId){
+				//this function is called when the STOP button is released
+				console.log("Audior.btStopClick("+recorderId+")");
+				document.getElementById("mainbtn").disabled = true
+				document.getElementById("pauseResumeRec").disabled = true
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: btStopClick()";
+			}
+			
+			function btRecordClick(recorderId){
+				//this function is called when the RECORD button is released
+				console.log("Audior.btRecordClick("+recorderId+")");
+				
+				document.getElementById("sav").disabled = true
+				document.getElementById("dwl").disabled = true
+				document.getElementById("pauseResumeRec").disabled = false
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: btRecordClick()";
+			}
+
+			function btPauseRecordingClick(recorderId){
+				//this function is called when the Pause Recording button is released
+				console.log("Audior.btPauseRecordingClick("+recorderId+")");
+				document.getElementById("mainbtn").disabled = true
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: btPauseRecordingClick()";
+			}
+			
+			function btResumeRecordingClick(recorderId){
+				//this function is called when the Resume Recording button is released
+				console.log("Audior.btResumeRecordingClick("+recorderId+")");
+				document.getElementById("mainbtn").disabled = false
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: btResumeRecordingClick()";
+			}
+			
+			
+			function onRecordingPlaybackStopped(recorderId){
+				//the recording has stopped playing
+				console.log('Audior.onRecordingPlaybackStopped('+recorderId+')')
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: onRecordingPlaybackStopped()";
+			}
+			
+			function onEncodingDone(duration, recorderId){
+				//the MP3Recorder has finished the encoding of your audio data to mp3
+				console.log('Audior.onEncodingDone('+duration+', '+recorderId+')')
+				document.getElementById("sav").disabled = false
+				document.getElementById("mainbtn").disabled = false
+				document.getElementById("recAgain").disabled = false
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: onEncodingDone()";
+			}
+			
+			function onUploadDone(success, recordName, duration, recorderId){
+				//the MP3Recorder has finished uploading the files to your server AND it has received a save=ok OR save=failed response from the upload script on the web server
+				//success  will be true if the upload succeeded and false otherwise
+				console.log('Audior.onUploadDone('+success+', '+recordName+', '+duration+', '+recorderId+')')
+				document.getElementById("dwl").disabled = false
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: onUploadDone()";
+			}
+			
+			function onMicAccess(allowed,recorderId){
+				console.log("Audior.onMicAccess("+allowed+","+recorderId+")");
+				//the user clicked Allow or Deny in the Privacy panel dialog box in Flash Player
+				//when the user clicks Deny this function is called with allowed=false
+				//when the user clicks Allow this function is called with allowed=true
+				//this function can be called anytime during the life of the Audior instance as the user has permanent access to the Privacy panel dialog box in Flash Player
+				document.getElementById("secondDisplay").innerHTML  = "Access to mic allowed: "+allowed;
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: onMicAccess()";
+			}
+			
+			function onFlashReady(recorderId){
+				console.log("Audior.onFlashReady("+recorderId+")");
+				//as soon as this function is called you can communicate with Audior using the JS Control API
+				//Example : document.Audior.record(); will make a call to flash in order to start recording
+				//recorderId: the recorderId sent via flash vars, to be used when there are many recorders on the same web page
+				document.getElementById("firstDisplay").innerHTML  = "Last JS callback: onFlashReady()";
+				document.getElementById("recAgain").disabled = true
+				document.getElementById("sav").disabled = true
+				document.getElementById("dwl").disabled = true
+				document.getElementById("pauseResumeRec").disabled = true
+				
+			}
+			
+</script>
+    
+        <!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough 
+             JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
+             when JavaScript is disabled.
+        -->
+        <div align="center" id="flashContent">
+			<form action="uploadFromMobile.php" method="post" enctype="multipart/form-data" id="recordingForm">
+				<div style="margin-left:50px;"><input name="FileInput" id="FileInput" type="file" accept="audio/*" capture="microphone" value="Start Recording" class="custom-file-input"/></div>
+				<input type="submit"  id="submit-btn" value="2. Upload"  class = "btnUpload"/>
+				<img src="ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
+			</form>
+			<div id="progressbox" ><div id="progressbar"></div ><div id="statustxt">0%</div></div>
+			<div id="output"></div>
+			<div>
+				<br/>
+				<audio  id='recorderAudio' controls>
+					<source src="">
+				</audio >
+			</div>
+        </div>
+        
+        <noscript>
+            You need to have JS enabled for Audior to show.
+        </noscript>   
+
+<div id="apiControls">	 
+	<p>JS Control API:
+		<input type="button" onclick="javascript:document.Audior.mainbtn()" name="mainbtn" value="Record -> Stop -> Play -> Pause" id="mainbtn"/>
+		<input type="button" onclick="javascript:document.Audior.pauseResumeBtn()" disabled name="pauseResumeRec" value="Pause/Resume Recording" id="pauseResumeRec"/></br>
+		<input type="button" onclick="javascript:document.Audior.recordagain()" disabled  name="recAgain" value="Record Again" id="recAgain"/>
+		<input type="button" onclick="javascript:document.Audior.save()" disabled value="Save" name="sav" id="sav"/>
+		<input type="button" onclick="javascript:document.Audior.download()" disabled value="Download" name="dwl" id="dwl" /></br>
+	</p>
+</div>
+<p id="firstDisplay">&nbsp;</p>
+<p id="secondDisplay">&nbsp;</p>
+
+<script>
+		
+		var ua = navigator.userAgent.toLowerCase();
+		if(navigator.appVersion.indexOf("iPad") != -1 || navigator.appVersion.indexOf("iPhone") != -1 || ua.indexOf("android") != -1 || ua.indexOf("ipod") != -1 || ua.indexOf("windows ce") != -1 || ua.indexOf("windows phone") != -1){
+			document.getElementById("apiControls").style.display = 'none';
+		}
+	
+</script>		
+   </body>
+</html>

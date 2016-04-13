@@ -27,8 +27,8 @@ class CKEditor {
             </div>
     `,
     styles: [`
-        div div {
-            width:430px;
+        #ckeditor {
+            width:836px;
             height:300px;
         } 
         .messageLabel {
@@ -38,4 +38,4 @@ class CKEditor {
     directives:[CKEditor]
 })
 
-export class EmailTextEditorComponent { }
+export class EmailTextEditorComponent {}

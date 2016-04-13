@@ -51,16 +51,20 @@ export class EmailGroupControl implements OnInit {
     public selectedGroups = [];
     private _menuRef:any;
     private _menuButtonRef:any;
+    private _elementRef:ElementRef;
     // private _itemRef:any;
     // private _checkboxRef:any;
     public groupSelectLabel:string = "Groups";
     public groupSelectionReview:string = "";
     
     constructor(elementRef:ElementRef){
-        this._menuRef = elementRef.nativeElement.querySelector("paper-menu");
-        this._menuButtonRef = elementRef.nativeElement.querySelector("paper-menu-button");
-        // this._itemRef = elementRef.nativeElement.querySelector("paper-item");
-        // this._checkboxRef = elementRef.nativeElement.querySelector("paper-checkbox");
+        setTimeout(() => {
+            this._menuRef = elementRef.nativeElement.querySelector("paper-menu");
+            this._menuButtonRef = elementRef.nativeElement.querySelector("paper-menu-button");
+            this._menuButtonRef.horizontalAlign = 'right';
+            this._menuButtonRef.verticalOffset = 46;
+            this._menuButtonRef.ignoreSelect = true;
+         },0)
     }
     
     onSelect(){
@@ -79,7 +83,7 @@ export class EmailGroupControl implements OnInit {
             else {
                 this.groupSelectLabel = "Groups";
             }
-        },1)
+         },1)
     }
     
     getGroups() {
@@ -93,9 +97,7 @@ export class EmailGroupControl implements OnInit {
     
     ngOnInit() {
         this.getGroups();
-        this._menuButtonRef.ignoreSelect = true;
-        // console.log(this._checkboxRef);
-        // console.log(this._itemRef);
+        
         // this._checkboxRef.autoFitOnAttach = true;
     }
 }

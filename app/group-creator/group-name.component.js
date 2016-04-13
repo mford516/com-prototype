@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -25,12 +27,12 @@ System.register(['angular2/core'], function(exports_1) {
                 GroupNameComponent = __decorate([
                     core_1.Component({
                         selector: 'group-name',
-                        template: "\n        <paper-input label=\"Group Name\"></paper-input>\n    "
+                        template: "\n        <paper-input label=\"Enter Group Name\"></paper-input>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], GroupNameComponent);
                 return GroupNameComponent;
-            })();
+            }());
             exports_1("GroupNameComponent", GroupNameComponent);
         }
     }

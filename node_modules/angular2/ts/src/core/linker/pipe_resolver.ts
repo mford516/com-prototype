@@ -2,6 +2,7 @@ import {resolveForwardRef, Injectable} from 'angular2/src/core/di';
 import {Type, isPresent, stringify} from 'angular2/src/facade/lang';
 import {BaseException} from 'angular2/src/facade/exceptions';
 import {PipeMetadata} from 'angular2/src/core/metadata';
+import {ReflectorReader} from 'angular2/src/core/reflection/reflector_reader';
 import {reflector} from 'angular2/src/core/reflection/reflection';
 
 function _isPipeMetadata(type: any): boolean {
@@ -17,11 +18,20 @@ function _isPipeMetadata(type: any): boolean {
  */
 @Injectable()
 export class PipeResolver {
+  private _reflector: ReflectorReader;
+  constructor(_reflector?: ReflectorReader) {
+    if (isPresent(_reflector)) {
+      this._reflector = _reflector;
+    } else {
+      this._reflector = reflector;
+    }
+  }
+
   /**
    * Return {@link PipeMetadata} for a given `Type`.
    */
   resolve(type: Type): PipeMetadata {
-    var metas = reflector.annotations(resolveForwardRef(type));
+    var metas = this._reflector.annotations(resolveForwardRef(type));
     if (isPresent(metas)) {
       var annotation = metas.find(_isPipeMetadata);
       if (isPresent(annotation)) {
@@ -31,3 +41,5 @@ export class PipeResolver {
     throw new BaseException(`No Pipe decorator found on ${stringify(type)}`);
   }
 }
+
+export var CODEGEN_PIPE_RESOLVER = new PipeResolver(reflector);

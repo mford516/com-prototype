@@ -60,8 +60,13 @@ export class SMSAccountControl implements OnChanges {
     @Input() groupSelection;
     
     constructor(elementRef:ElementRef){
-        this._menuRef = elementRef.nativeElement.querySelector("paper-menu");
-        this._menuButtonRef = elementRef.nativeElement.querySelector("paper-menu-button");
+        setTimeout(() => {
+            this._menuRef = elementRef.nativeElement.querySelector("paper-menu");
+            this._menuButtonRef = elementRef.nativeElement.querySelector("paper-menu-button");
+            this._menuButtonRef.horizontalAlign = 'right';
+            this._menuButtonRef.verticalOffset = 46;
+            this._menuButtonRef.ignoreSelect = true;
+        },0)
     }
     
     onSelect(){
@@ -85,27 +90,27 @@ export class SMSAccountControl implements OnChanges {
     
     getAccounts() {
         var STUDENTACCOUNTS: Account[] = [
-            { "id": "1001", "type": "Student", "name": "Billy Bob", "address":"billy@example.com"},
-            { "id": "1002", "type": "Student", "name": "Susie Sue", "address":"susie@example.com"},
-            { "id": "1003", "type": "Student", "name": "Jenny Jane", "address":"jenny@example.com"},
+            { "id": "1001", "type": "Student", "name": "Billy Bob"},
+            { "id": "1002", "type": "Student", "name": "Susie Sue"},
+            { "id": "1003", "type": "Student", "name": "Jenny Jane"},
         ];
 
         var PARENTACCOUNTS: Account[] = [
-            { "id": "bbob", "type": "Parent", "name": "Billy Bob Parent", "address":"billyparent@example.com"},
-            { "id": "ssue", "type": "Parent", "name": "Susie Sue Parent", "address":"susieparent@example.com"},
-            { "id": "jjane", "type": "Parent", "name": "Jenny Jane Parent", "address":"jennyparent@example.com"},
+            { "id": "bbob", "type": "Parent", "name": "Billy Bob Parent"},
+            { "id": "ssue", "type": "Parent", "name": "Susie Sue Parent"},
+            { "id": "jjane", "type": "Parent", "name": "Jenny Jane Parent"},
         ];
 
         var STAFFACCOUNTS: Account[] = [
-            { "id": "10", "type": "Teacher", "name": "Jim James", "address":"jim@example.com"},
-            { "id": "11", "type": "Teacher", "name": "Dan Daniels", "address":"dan@example.com"},
-            { "id": "12", "type": "Teacher", "name": "Cliff Clifford", "address":"cliff@example.com"},
-            { "id": "20", "type": "Admin", "name": "Ben Button", "address":"ben@example.com"},
-            { "id": "21", "type": "Admin", "name": "Matt Matthews", "address":"matt@example.com"},
-            { "id": "22", "type": "Admin", "name": "Fred Fredericks", "address":"fred@example.com"},
-            { "id": "30", "type": "NoAccess", "name": "Jeff Jefferson", "address":"jeff@example.com"},
-            { "id": "31", "type": "NoAccess", "name": "Howie Howardson", "address":"howie@example.com"},
-            { "id": "32", "type": "NoAccess", "name": "Pete Peterson", "address":"pete@example.com"},
+            { "id": "10", "type": "Teacher", "name": "Jim James"},
+            { "id": "11", "type": "Teacher", "name": "Dan Daniels"},
+            { "id": "12", "type": "Teacher", "name": "Cliff Clifford"},
+            { "id": "20", "type": "Admin", "name": "Ben Button"},
+            { "id": "21", "type": "Admin", "name": "Matt Matthews"},
+            { "id": "22", "type": "Admin", "name": "Fred Fredericks"},
+            { "id": "30", "type": "NoAccess", "name": "Jeff Jefferson"},
+            { "id": "31", "type": "NoAccess", "name": "Howie Howardson"},
+            { "id": "32", "type": "NoAccess", "name": "Pete Peterson"},
         ];
         
         this.accounts = [];
@@ -130,7 +135,7 @@ export class SMSAccountControl implements OnChanges {
     }
     
     ngOnInit(){
-        this._menuButtonRef.ignoreSelect = true;
+        
     }
     
     ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {

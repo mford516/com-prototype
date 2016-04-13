@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,15 +20,19 @@ System.register(['angular2/core'], function(exports_1) {
         execute: function() {
             SMSGroupControl = (function () {
                 function SMSGroupControl(elementRef) {
+                    var _this = this;
                     this.selectedGroups = [];
                     // private _itemRef:any;
                     // private _checkboxRef:any;
                     this.groupSelectLabel = "Groups";
                     this.groupSelectionReview = "";
-                    this._menuRef = elementRef.nativeElement.querySelector("paper-menu");
-                    this._menuButtonRef = elementRef.nativeElement.querySelector("paper-menu-button");
-                    // this._itemRef = elementRef.nativeElement.querySelector("paper-item");
-                    // this._checkboxRef = elementRef.nativeElement.querySelector("paper-checkbox");
+                    setTimeout(function () {
+                        _this._menuRef = elementRef.nativeElement.querySelector("paper-menu");
+                        _this._menuButtonRef = elementRef.nativeElement.querySelector("paper-menu-button");
+                        _this._menuButtonRef.horizontalAlign = 'right';
+                        _this._menuButtonRef.verticalOffset = 46;
+                        _this._menuButtonRef.ignoreSelect = true;
+                    }, 0);
                 }
                 SMSGroupControl.prototype.onSelect = function () {
                     var _this = this;
@@ -57,10 +63,6 @@ System.register(['angular2/core'], function(exports_1) {
                 };
                 SMSGroupControl.prototype.ngOnInit = function () {
                     this.getGroups();
-                    this._menuButtonRef.ignoreSelect = true;
-                    // console.log(this._checkboxRef);
-                    // console.log(this._itemRef);
-                    // this._checkboxRef.autoFitOnAttach = true;
                 };
                 SMSGroupControl = __decorate([
                     core_1.Component({
@@ -71,7 +73,7 @@ System.register(['angular2/core'], function(exports_1) {
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], SMSGroupControl);
                 return SMSGroupControl;
-            })();
+            }());
             exports_1("SMSGroupControl", SMSGroupControl);
         }
     }

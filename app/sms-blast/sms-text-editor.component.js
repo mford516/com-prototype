@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -23,12 +25,12 @@ System.register(['angular2/core'], function(exports_1) {
                     core_1.Component({
                         selector: 'sms-text-editor',
                         template: "\n            <paper-textarea char-counter maxlength=\"160\" label=\"Message\"></paper-textarea>\n    ",
-                        styles: ["\n        paper-textarea {\n            width:775px;\n            border:1px solid black;\n        } \n    "]
+                        styles: ["\n        paper-textarea {\n            width:775px;\n            padding:15px;\n            border:1px solid #737373;\n            border-radius:10px;\n            background-color:white;\n        } \n    "]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], SMSTextEditorComponent);
                 return SMSTextEditorComponent;
-            })();
+            }());
             exports_1("SMSTextEditorComponent", SMSTextEditorComponent);
         }
     }

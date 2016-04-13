@@ -16,6 +16,10 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.2.0"
+    "polymer": "Polymer/polymer#^1.2.0",
+    "vaadin-core-elements": "0.3.0",
+    "vaadin-date-picker": "^1.0.0-beta1",
+    "vaadin-upload": "^1.0.0-beta1",
+    "normalize-css": "^4.0.0"
   }
 }

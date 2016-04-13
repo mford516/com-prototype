@@ -60,8 +60,13 @@ export class EmailAccountControl implements OnChanges {
     @Input() groupSelection;
     
     constructor(elementRef:ElementRef){
-        this._menuRef = elementRef.nativeElement.querySelector("paper-menu");
-        this._menuButtonRef = elementRef.nativeElement.querySelector("paper-menu-button");
+        setTimeout(() => {
+            this._menuRef = elementRef.nativeElement.querySelector("paper-menu");
+            this._menuButtonRef = elementRef.nativeElement.querySelector("paper-menu-button");
+            this._menuButtonRef.horizontalAlign = 'right';
+            this._menuButtonRef.verticalOffset = 46;
+            this._menuButtonRef.ignoreSelect = true;
+        },0)
     }
     
     onSelect(){
@@ -129,8 +134,12 @@ export class EmailAccountControl implements OnChanges {
         }
     }
     
+    test(thing) {
+        console.log(thing);
+    }
+    
     ngOnInit(){
-        this._menuButtonRef.ignoreSelect = true;
+
     }
     
     ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {

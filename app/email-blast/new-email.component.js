@@ -1,4 +1,6 @@
-System.register(['angular2/core', './email-sender.component', './email-recipient-selection.component', './email-text-editor.component', './email-subject.component', './email-attachments.component', './email-submit.component'], function(exports_1) {
+System.register(['angular2/core', './email-sender.component', './email-recipient-selection.component', './email-text-editor.component', './email-subject.component', './email-attachments.component', './email-submit.component'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -48,12 +50,12 @@ System.register(['angular2/core', './email-sender.component', './email-recipient
                             email_subject_component_1.EmailSubjectComponent,
                             email_attachments_component_1.EmailAttachments,
                             email_submit_component_1.EmailSubmit],
-                        styles: ["\n        email-attachments {\n            float:left\n            width:400px;\n            display: inline-block !important;\n        }\n        email-submit {\n            float:right;\n            width:300px;\n            display: inline-block !important;\n        }\n        div {\n            width:775px;\n            margin: 0 auto;\n        }\n    "]
+                        styles: ["\n        email-attachments {\n            float:left\n            width:400px;\n            display: inline-block !important;\n        }\n        email-submit {\n            float:right;\n            width:300px;\n            display: inline-block !important;\n        }\n        div {\n            width:836px;\n            margin: 0 auto;\n        }\n    "]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], NewEmailComponent);
                 return NewEmailComponent;
-            })();
+            }());
             exports_1("NewEmailComponent", NewEmailComponent);
         }
     }

@@ -12,6 +12,7 @@ import {Group} from '../email-blast/email-recipient-group';
     `,
     styles:[`
         paper-listbox {
+            width:100%;
             border:2px solid black;
         }
         paper-item {

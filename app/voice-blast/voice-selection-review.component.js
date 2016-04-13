@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,15 +21,27 @@ System.register(['angular2/core'], function(exports_1) {
             VoiceSelectionReviewComponent = (function () {
                 function VoiceSelectionReviewComponent() {
                 }
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], VoiceSelectionReviewComponent.prototype, "groupSelectionReview", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], VoiceSelectionReviewComponent.prototype, "accountSelectionReview", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], VoiceSelectionReviewComponent.prototype, "quickAddSelectionReview", void 0);
                 VoiceSelectionReviewComponent = __decorate([
                     core_1.Component({
                         selector: 'voice-selection-review',
-                        template: "\n            <div>\n                <hr>\n                <div>\n                    Sending to: --Model Interpolation of selection array goes here\n                </div>\n                <hr>\n            </div>\n    ",
+                        template: "\n            <div>\n                <hr>\n                <div>\n                    <b>Sending to:</b> {{groupSelectionReview}} {{quickAddSelectionReview}}<br>\n                    <b>Excluding:</b> {{accountSelectionReview}}\n                </div>\n                <hr>\n            </div>\n    ",
                     }), 
                     __metadata('design:paramtypes', [])
                 ], VoiceSelectionReviewComponent);
                 return VoiceSelectionReviewComponent;
-            })();
+            }());
             exports_1("VoiceSelectionReviewComponent", VoiceSelectionReviewComponent);
         }
     }

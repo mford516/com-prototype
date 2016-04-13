@@ -7,30 +7,37 @@ import {GroupListComponent} from './group-list.component'
 @Component({
     selector: 'group-creator',
     template: `
-        <h3>Group Creator</h3>
         <div>
             <group-info></group-info>
             <group-summary></group-summary>
             <group-list></group-list>
+            <hr>
         </div>
+        
     `,
     directives: [GroupInfoComponent,GroupSummaryComponent,GroupListComponent],
     styles: [`
         h3, div {
-            width:775px;
+            width:836px;
             margin: 0 auto;
+            background-color:#bfcbe8;
+            padding:10px;
+            height:100%;
         }
         group-info {
             float:left;
-            width: 30%;   
+            width: 45%;   
         }
         group-summary {
             float:left;
-            width: 45%;   
+            width: 35%;   
         }
         group-list {
             float:left;
             width: 20%;   
+        }
+        hr {
+            color:black;
         }
     `]
 })

@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,7 +24,7 @@ System.register(['angular2/core'], function(exports_1) {
                         CKEDITOR.replace(_elm.nativeElement);
                     }
                     else if (CKEDITOR.instances['ckeditor']) {
-                        delete CKEDITOR.instances['ckeditor'];
+                        CKEDITOR.instances.ckeditor.destroy(true);
                         CKEDITOR.replace(_elm.nativeElement);
                     }
                 }
@@ -33,24 +35,24 @@ System.register(['angular2/core'], function(exports_1) {
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], CKEditor);
                 return CKEditor;
-            })();
+            }());
             EmailSignatureComponent = (function () {
                 function EmailSignatureComponent() {
                 }
                 EmailSignatureComponent.prototype.onSave = function () {
-                    console.log(CKEDITOR.instances.editor1.getData());
+                    //console.log(CKEDITOR.instances.editor1.getData());
                 };
                 EmailSignatureComponent = __decorate([
                     core_1.Component({
                         selector: 'email-text-editor',
-                        template: "\n            <div class=\"sigLabel\">\n                <label>Signature: </label>\n            </div>\n            <div>\n                <textarea></textarea>\n            </div>\n            <div>\n                &nbsp;\n            </div>\n            <div class=\"buttons\">\n                <paper-button>Cancel</paper-button>\n                <paper-button (click)=\"onSave()\">Save</paper-button>\n            </div>\n    ",
+                        template: "\n            <div class=\"sigLabel\">\n                <label>Signature: </label>\n            </div>\n            <div>\n                <textarea id=\"ckeditor\"></textarea>\n            </div>\n            <div>\n                &nbsp;\n            </div>\n            <div class=\"buttons\">\n                <paper-button>Cancel</paper-button>\n                <paper-button (click)=\"onSave()\">Save</paper-button>\n            </div>\n    ",
                         styles: ["\n        div div {\n            width:430px;\n            height:300px;\n        } \n        .messageLabel {\n            width:50px;\n        }\n        .buttons {\n            float:right;\n        }\n        paper-button {\n            display: inline-block !important;\n            padding:6px 12px;\n            font-size: 14px;\n            font-weight: 400;\n            line-height: 1.42857143;\n            width:120px;\n            border:1px solid #ccc;\n            border-radius:4px;\n            background: white;\n            color: black;\n            font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n            cursor:pointer;\n            text-transform: none;\n            text-align:left;\n        }  \n    "],
                         directives: [CKEditor]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], EmailSignatureComponent);
                 return EmailSignatureComponent;
-            })();
+            }());
             exports_1("EmailSignatureComponent", EmailSignatureComponent);
         }
     }

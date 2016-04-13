@@ -24,8 +24,8 @@ import {Account} from './sms-recipient-account';
             width:30px;
             border:1px solid #ccc;
             border-radius:4px;
-            background: #005890;
-            color: white;
+            background-color: white;
+            color: black;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             cursor:pointer;
             text-transform: none;
@@ -40,7 +40,15 @@ export class QuickAddControl implements OnInit {
     public quickAddSelectionReview = "";
     
     constructor(elementRef:ElementRef) {
-        this._quickAdd = elementRef.nativeElement.querySelector("paper-typeahead-input");
+        setTimeout(() => {
+            this._quickAdd = elementRef.nativeElement.querySelector("paper-typeahead-input");
+            this._quickAdd.displayProp = "name";
+            this._quickAdd.searchableProps = ["name","id"];
+            this._quickAdd.isCandidatesJson = true;
+            this._quickAdd.localCandidates = this.accounts;
+            this._quickAdd.placeholder = "Quick Add";
+            this._quickAdd.maxSuggestions = 10;
+        },0)
     }
     
     onAdd() {
@@ -5303,21 +5311,11 @@ export class QuickAddControl implements OnInit {
             { "id": "32", "type": "NoAccess", "name": "Pete Peterson", "address":"pete@example.com"},
         ]; 
         
-        //console.log(ALLACCOUNTS);
-        
         this.accounts = ALLACCOUNTS;  
     }
     
     ngOnInit(){
         this.getAllAccounts();
-        //console.log(this._quickAdd);
-        this._quickAdd.displayProp = "name";
-        this._quickAdd.searchableProps = ["name","id"];
-        this._quickAdd.isCandidatesJson = true;
-        this._quickAdd.localCandidates = this.accounts;
-        this._quickAdd.placeholder = "Quick Add";
-        this._quickAdd.maxSuggestions = 10;
-        //console.log(this._quickAdd.list);
     }
     
  }

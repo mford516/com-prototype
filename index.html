@@ -15,6 +15,7 @@
     
     <script src="node_modules/ckeditor/ckeditor.js"></script>
     <script src="node_modules/moment/moment.js"></script>
+    <script src="https://dev.gradelink.com:6565/AngularJS_SPAs/common/GlAuthenticationService_12_05_2015.js"></script>
     
      <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
      
@@ -27,7 +28,9 @@
     in this file. All other imports should go in elements.html -->
     <link rel="import" href="app/elements/elements.html">
     
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
+    
+    <link href="bower_components/normalize-css/normalize.css" rel="stylesheet">
 
     <!-- 2. Configure SystemJS -->
     <script>
@@ -47,13 +50,19 @@
     
         document.addEventListener("DOMContentLoaded", function(event) { 
             CKEDITOR.on('instanceReady', function () {
-                //console.log('CKEDITOR - instanceReady - iPad');
+                console.log(CKEDITOR);
                 //console.log('ipad instanceReady - height' + getWinHeight());
                 ckInstance_ID = CKEDITOR.instances[Object.keys(CKEDITOR.instances)[0]].id;
             });
         });
         
     </script>
+    
+    <style>
+        my-app {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }  
+    </style>
 
   </head>
 

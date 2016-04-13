@@ -1,0 +1,11 @@
+0) prepare blog post
+1) Update SVN
+2) Make sure LINCENSE KEY in HTML file is empty or has a replacement
+3) ant makeEverything
+4) upload archives to mv4
+5) check a client page if new build is available for download
+6) update website
+7) post on forum and on twitter and facebook
+8) email all clients with fixed issues or implemented features
+
+

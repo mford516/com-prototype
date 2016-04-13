@@ -1,5 +1,7 @@
 import {ConcreteType, global, Type, isFunction, stringify} from 'angular2/src/facade/lang';
 
+var _nextClassId = 0;
+
 /**
  * Declares the interface to be used with {@link Class}.
  */
@@ -228,13 +230,21 @@ export function Class(clsDef: ClassDefinition): ConcreteType {
     Reflect.defineMetadata('annotations', this.annotations, constructor);
   }
 
+  if (!constructor['name']) {
+    constructor['overriddenName'] = `class${_nextClassId++}`;
+  }
+
   return <ConcreteType>constructor;
 }
 
 var Reflect = global.Reflect;
-if (!(Reflect && Reflect.getMetadata)) {
-  throw 'reflect-metadata shim is required when using class decorators';
-}
+// Throw statement at top-level is disallowed by closure compiler in ES6 input.
+// Wrap in an IIFE as a work-around.
+(function checkReflect() {
+  if (!(Reflect && Reflect.getMetadata)) {
+    throw 'reflect-metadata shim is required when using class decorators';
+  }
+})();
 
 export function makeDecorator(
     annotationCls, chainFn: (fn: Function) => void = null): (...args: any[]) => (cls: any) => any {

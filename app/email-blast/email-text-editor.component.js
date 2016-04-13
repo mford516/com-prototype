@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -33,7 +35,7 @@ System.register(['angular2/core'], function(exports_1) {
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], CKEditor);
                 return CKEditor;
-            })();
+            }());
             EmailTextEditorComponent = (function () {
                 function EmailTextEditorComponent() {
                 }
@@ -41,13 +43,13 @@ System.register(['angular2/core'], function(exports_1) {
                     core_1.Component({
                         selector: 'email-text-editor',
                         template: "\n            <div class=\"messageLabel\">\n                <label>Message: </label>\n            </div>\n            <div>\n                <textarea id=\"ckeditor\"></textarea>\n            </div>\n    ",
-                        styles: ["\n        div div {\n            width:430px;\n            height:300px;\n        } \n        .messageLabel {\n            width:50px;\n        }  \n    "],
+                        styles: ["\n        #ckeditor {\n            width:836px;\n            height:300px;\n        } \n        .messageLabel {\n            width:50px;\n        }  \n    "],
                         directives: [CKEditor]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], EmailTextEditorComponent);
                 return EmailTextEditorComponent;
-            })();
+            }());
             exports_1("EmailTextEditorComponent", EmailTextEditorComponent);
         }
     }

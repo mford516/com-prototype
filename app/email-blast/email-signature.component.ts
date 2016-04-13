@@ -10,7 +10,7 @@ class CKEditor {
             CKEDITOR.replace(_elm.nativeElement);
         }
         else if (CKEDITOR.instances['ckeditor']) {
-            delete CKEDITOR.instances['ckeditor'];
+            CKEDITOR.instances.ckeditor.destroy(true);
             CKEDITOR.replace(_elm.nativeElement);
         }
     }
@@ -23,7 +23,7 @@ class CKEditor {
                 <label>Signature: </label>
             </div>
             <div>
-                <textarea></textarea>
+                <textarea id="ckeditor"></textarea>
             </div>
             <div>
                 &nbsp;
@@ -66,6 +66,6 @@ class CKEditor {
 
 export class EmailSignatureComponent {
     onSave(){
-        console.log(CKEDITOR.instances.editor1.getData());
+        //console.log(CKEDITOR.instances.editor1.getData());
     }
 }

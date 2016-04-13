@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router', './new-email.component', './email-history.component', './email-scheduled.component', './email-signature.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './new-email.component', './email-history.component', './email-scheduled.component', './email-signature.component'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -37,10 +39,10 @@ System.register(['angular2/core', 'angular2/router', './new-email.component', '.
                 EmailBlastComponent = __decorate([
                     core_1.Component({
                         selector: 'email-blast',
-                        template: "\n        <div>\n            <h3>Email Blast</h3>\n            <paper-tabs noink no-bar selected=\"0\">\n                <paper-tab [routerLink]=\"['NewEmail']\">New</paper-tab>\n                <paper-tab [routerLink]=\"['EmailHistory']\">History</paper-tab>\n                <paper-tab [routerLink]=\"['EmailScheduled']\">Scheduled</paper-tab>\n                <paper-tab [routerLink]=\"['EmailSignature']\">Signature</paper-tab>\n            </paper-tabs>\n            <div>&nbsp;</div>\n            <router-outlet></router-outlet>\n        </div>\n    ",
+                        template: "\n        <div class=\"container\">\n            <paper-tabs noink no-bar selected=\"0\">\n                <paper-tab [routerLink]=\"['NewEmail']\">\n                    New\n                </paper-tab>\n                <paper-tab [routerLink]=\"['EmailHistory']\">\n                    <iron-icon icon=\"event\"></iron-icon>\n                    <br>\n                    <div>History</div>\n                </paper-tab>\n                <paper-tab [routerLink]=\"['EmailScheduled']\">\n                    <iron-icon icon=\"schedule\"></iron-icon>\n                    Scheduled\n                </paper-tab>\n                <paper-tab [routerLink]=\"['EmailSignature']\">\n                    <iron-icon icon=\"create\"></iron-icon>\n                    Signature\n                </paper-tab>\n            </paper-tabs>\n            <div>&nbsp;</div>\n            <router-outlet></router-outlet>\n        </div>\n    ",
                         inputs: ['sender'],
                         directives: [router_1.RouterOutlet, router_1.ROUTER_DIRECTIVES],
-                        styles: ["\n        paper-tabs {\n            width:500px;\n        }\n        paper-tab {\n            background-color:grey;\n            width:100px;\n            text-align:center;\n            vertical-align:center;\n            font-family:\"Helvetica Neue\", Helvetica, Arial, sans-serif;\n            color: black;\n            border-top-left-radius:10px 10px;\n            border-top-right-radius:10px 10px;\n            border: 1px solid black;\n        }\n        paper-tabs[no-bar] paper-tab.iron-selected {\n            color: white;\n            border-bottom: none;\n        }\n        div {\n            width:775px;\n            margin: 0 auto;\n        }\n    "]
+                        styles: ["\n        paper-tabs {\n            width:400px;\n        }\n        paper-tab {\n            background-color:#bfcbe8;\n            width:100px;\n            text-align:center;\n            vertical-align:center;\n            font-family:\"Helvetica Neue\", Helvetica, Arial, sans-serif;\n            color: black;\n            border: 1px solid black;\n            border-top:none;\n            border-collapse:collapse;\n        }\n        paper-tabs[no-bar] paper-tab.iron-selected {\n            color:white;\n            border-bottom: none;\n        }\n        .container {\n            padding:10px;\n            width:836px;\n            height:100%;\n            margin: 0 auto;\n            background-color:#bfcbe8;\n        }\n        iron-icon {\n            position:static !important;\n        }\n    "]
                     }),
                     router_1.RouteConfig([
                         { path: '/', name: 'NewEmail', component: new_email_component_1.NewEmailComponent, useAsDefault: true },
@@ -51,7 +53,7 @@ System.register(['angular2/core', 'angular2/router', './new-email.component', '.
                     __metadata('design:paramtypes', [])
                 ], EmailBlastComponent);
                 return EmailBlastComponent;
-            })();
+            }());
             exports_1("EmailBlastComponent", EmailBlastComponent);
         }
     }

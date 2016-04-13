@@ -13,19 +13,15 @@ import {Component,OnInit,ElementRef} from 'angular2/core';
                 </paper-dialog>
             </div>
             <div [hidden]="visible">
-                <paper-button class="schedule" (click)="onOpen();toggle()">
+                <paper-button class="schedule" (click)="toggle()">
                     <span>Schedule</span>
-                    <iron-icon suffix icon="today"></iron-icon>
                 </paper-button>
                 <paper-button class="send">
                     <span>Send Now</span>
-                    <iron-icon suffix icon="send"></iron-icon>
                 </paper-button>
             </div>
             <div [hidden]="!visible">
-                <paper-button class="selecetedDateButton" (click)="onOpen()">
-                    <span>{{selectedDate}}</span>
-                </paper-button>
+                <vaadin-date-picker label="Pick a date"></vaadin-date-picker>
                 <div>&nbsp;</div>
                 <paper-button class="cancelSchedule" (click)="toggle()">
                     <span>Cancel</span>
@@ -45,7 +41,7 @@ import {Component,OnInit,ElementRef} from 'angular2/core';
             width:120px;
             border:1px solid #ccc;
             border-radius:4px;
-            background: white;
+            background-color: white;
             color: black;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             cursor:pointer;
@@ -88,30 +84,14 @@ export class EmailSubmit {
     private _picker:any;
     public selectedDate:any;
     public date:Date = new Date();
-    public dd;
-    public mm;
-    public yyyy;
-    public todaysDate:string;
     
     constructor(_elemRef:ElementRef) {
         this.visible = false;
         this._dialog = _elemRef.nativeElement.querySelector('paper-dialog');
-        this._picker = _elemRef.nativeElement.querySelector('paper-date-picker');
-        
-        this.todaysDate = moment();
-        console.log(this.todaysDate);
+        //this._picker = _elemRef.nativeElement.querySelector('paper-date-picker');
     }
     
     toggle() {
         this.visible = !this.visible;
-    }
-    
-    onOpen() {
-        this._dialog.open();
-    }
-    
-    onClose() {
-        this.selectedDate = this._picker.date.getMonth() + '/' + this._picker.date.getDate() + '/' + this._picker.date.getFullYear();
-        this._dialog.close();
     }
 }

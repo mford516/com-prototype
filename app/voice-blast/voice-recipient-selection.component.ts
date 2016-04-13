@@ -11,11 +11,13 @@ import {VoiceSelectionReviewComponent} from  './voice-selection-review.component
     selector: 'voice-recipient-selection',
     template: `
         <div>
-            <voice-group-control #selectedGroup></voice-group-control>
-            <voice-account-control [groupID]="selectedGroup"></voice-account-control>
-            <quick-add-control></quick-add-control>
-            <div>&nbsp;</div>
-            <voice-selection-review></voice-selection-review>
+            <voice-group-control #groups></voice-group-control>
+            <voice-account-control [groupSelection]="groups.selectedGroups" #accounts></voice-account-control>
+            <quick-add-control #quickAdd></quick-add-control>
+            <voice-selection-review [groupSelectionReview]="groups.groupSelectionReview" 
+            [accountSelectionReview]="accounts.accountSelectionReview" 
+            [quickAddSelectionReview]="quickAdd.quickAddSelectionReview">
+            </voice-selection-review>
         </div>
     `,
     directives:[VoiceGroupControl,VoiceAccountControl,QuickAddControl,VoiceSelectionReviewComponent],

@@ -1,32 +1,40 @@
-import {Component} from 'angular2/core';
+import {Component, ElementRef} from 'angular2/core';
+
+export interface Person {
+    id: string;
+    name: string;
+}
 
 @Component({
-    selector: 'group-persons',
+    selector: 'group-person',
     template: `
+        <iron-label>
+            Person:
             <paper-menu-button>
                 <paper-button class="dropdown-trigger">
                     <span>{{personSelectLabel}}</span>
                     <iron-icon icon="arrow-drop-down"></iron-icon>
                 </paper-button>
-                <paper-menu #m class="dropdown-content" multi (change)="onSelect()">
-                    <paper-item *ngFor="#group of groups" role="menuitemcheckbox" [value]="group.id">
-                        <paper-checkbox>{{group.name}}</paper-checkbox>
+                <paper-menu #m class="dropdown-content" (click)="onSelect()">
+                    <paper-item *ngFor="#person of persons" [value]="person.id">
+                        {{person.name}}
                     </paper-item>
                 </paper-menu>
             </paper-menu-button>
+        </iron-label>
     `,
     styles:[`
         paper-item {
-            width:200px;
+            width:120px;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
         paper-button {
             display: inline-block !important;
-            padding:6px 12px;
+            padding:6px 6px;
             font-size: 14px;
             font-weight: 400;
             line-height: 1.42857143;
-            width:200px;
+            width:120px;
             border:1px solid #ccc;
             border-radius:4px;
             background: white;
@@ -42,18 +50,34 @@ import {Component} from 'angular2/core';
     `]
 })
 
-export class GroupNameComponent {
-    public group: Object = {
-        name: ''
-    };
-    
-    public groups: Group[];
-    public selectedGroup:Group;
-    public selectedGroups = [];
+export class GroupPersonComponent {
+    public persons: Person[];
+    public personSelectLabel:string = 'Select...';
     private _menuRef:any;
     private _menuButtonRef:any;
-    // private _itemRef:any;
-    // private _checkboxRef:any;
-    public groupSelectLabel:string = "Groups";
-    public groupSelectionReview:string = "";
+    
+    constructor(elementRef:ElementRef){
+        setTimeout(() => {
+            this._menuRef = elementRef.nativeElement.querySelector("paper-menu");
+            this._menuButtonRef = elementRef.nativeElement.querySelector("paper-menu-button");
+            this._menuButtonRef.horizontalAlign = 'right';
+            this._menuButtonRef.verticalOffset = 46;
+        },0)
+    }
+    
+    getPersons() {
+        this.persons = [
+            { 'id' : '1', 'name' : 'Staff' },
+            { 'id' : '2', 'name' : 'Parents' },
+            { 'id' : '3', 'name' : 'Students' },
+        ]
+    }
+    
+    onSelect(){
+        this.personSelectLabel = this._menuRef.selectedItems[0].innerText;
+    }
+    
+    ngOnInit(){
+        this.getPersons();
+    }
 }

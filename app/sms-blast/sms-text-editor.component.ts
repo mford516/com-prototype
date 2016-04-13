@@ -8,7 +8,10 @@ import {Component,Directive,ElementRef} from 'angular2/core'
     styles: [`
         paper-textarea {
             width:775px;
-            border:1px solid black;
+            padding:15px;
+            border:1px solid #737373;
+            border-radius:10px;
+            background-color:white;
         } 
     `]
 })
