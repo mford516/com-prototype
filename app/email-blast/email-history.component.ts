@@ -84,7 +84,7 @@ export class EmailHistoryComponent {
         this.selectedRowMessage = this.selectedRow.message;
         this.selectedRowRecipients = this.selectedRow.recipients;
         
-        //CKEDITOR.instances["messageEditor"].setData(this.selectedRowMessage);
+        CKEDITOR.instances["messageEditor"].setData(this.selectedRowMessage);
         
         this.modal.open();
     }

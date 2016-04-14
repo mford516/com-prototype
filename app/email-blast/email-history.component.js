@@ -94,7 +94,7 @@ System.register(['angular2/core', './email-text-editor.component'], function(exp
                     this.selectedRowTime = this.selectedRow.time;
                     this.selectedRowMessage = this.selectedRow.message;
                     this.selectedRowRecipients = this.selectedRow.recipients;
-                    //CKEDITOR.instances["messageEditor"].setData(this.selectedRowMessage);
+                    CKEDITOR.instances["messageEditor"].setData(this.selectedRowMessage);
                     this.modal.open();
                 };
                 EmailHistoryComponent.prototype.onClose = function () {
